@@ -1,37 +1,37 @@
 
-public class Event <T> {
+open class Event <T> {
 
-  public var listenerCount: Int { return _listeners.count }
+  open var listenerCount: Int { return _listeners.count }
 
   public init () {}
 
-  public func on (_ handler: @escaping (T) -> Void) -> EventListener<T> {
+  open func on (_ handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, nil, false, handler)
   }
 
-  public func on (_ target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
+  open func on (_ target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, target, false, handler)
   }
 
   @discardableResult
-  public func once (handler: @escaping (T) -> Void) -> EventListener<T> {
+  open func once (handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, nil, true, handler)
   }
 
   @discardableResult
-  public func once (target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
+  open func once (target: AnyObject, _ handler: @escaping (T) -> Void) -> EventListener<T> {
     return EventListener(self, target, true, handler)
   }
 
-  public func emit (_ data: T) {
+  open func emit (_ data: T) {
     _emit(data, on: "0")
   }
 
-  public func emit (_ data: T, on target: AnyObject) {
+  open func emit (_ data: T, on target: AnyObject) {
     _emit(data, on: (target as? String) ?? getHash(target))
   }
 
-  public func emit (_ data: T, on targets: [AnyObject]) {
+  open func emit (_ data: T, on targets: [AnyObject]) {
     for target in targets {
       _emit(data, on: (target as? String) ?? getHash(target))
     }

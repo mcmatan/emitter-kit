@@ -36,7 +36,7 @@ open class Listener {
 
   func _stopListening () {}
 
-  func _trigger (_ data: Any!) {
+  open func _trigger (_ data: Any!) {
     _handler(data)
     if self.once {
       self.isListening = false

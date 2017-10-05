@@ -3,7 +3,7 @@ public func += (storage: inout [Listener], listener: Listener) {
   storage.append(listener)
 }
 
-public class Listener {
+open class Listener {
 
   public var isListening: Bool {
     get {

@@ -40,9 +40,9 @@ open class Event <T> {
   // 1 - getHash(Listener.target)
   // 2 - getHash(Listener)
   // 3 - DynamicPointer<Listener>
-  var _listeners = [String:[String:DynamicPointer<Listener>]]()
+  open var _listeners = [String:[String:DynamicPointer<Listener>]]()
 
-  private func _emit (_ data: Any!, on targetID: String) {
+  open func _emit (_ data: Any!, on targetID: String) {
     if let listeners = _listeners[targetID] {
       for (_, listener) in listeners {
         listener.object._trigger(data)

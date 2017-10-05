@@ -13,7 +13,7 @@ func StrongPointer <T: Any> (_ object: T) -> DynamicPointer<T> {
   return ptr
 }
 
-class DynamicPointer <T: AnyObject> {
+open class DynamicPointer <T: AnyObject> {
 
   var object: T! { return strongPointer ?? weakPointer ?? nil }
 

@@ -54,7 +54,7 @@ open class Event <T> {
     self.clean()
   }
     
-    internal func clean() {
+  open func clean() {
         for (_, listeners) in _listeners {
             for (_, listener) in listeners {
                 listener.object._listening = false

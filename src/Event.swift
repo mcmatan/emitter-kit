@@ -57,7 +57,9 @@ open class Event <T> {
   open func clean() {
         for (_, listeners) in _listeners {
             for (_, listener) in listeners {
-                listener.object._listening = false
+                if let isObject = listener.object {
+                    isObject._listening = false
+                }
             }
         }
     }

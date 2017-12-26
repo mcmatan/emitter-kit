@@ -6,7 +6,7 @@ public func += (storage: inout [Listener], listener: Listener) {
 }
 
 open class Listener {
-    open let cleanListenerNotificationName = NSNotification.Name("cleanListenerNotificationName")
+    static let cleanListenerNotificationName = NSNotification.Name("cleanListenerNotificationName")
 
   public var isListening: Bool {
     get {
@@ -47,7 +47,7 @@ open class Listener {
   }
     
     open func onInit() {
-        NotificationCenter.default.addObserver(self, selector: #selector(clean), name: self.cleanListenerNotificationName, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(clean), name: Listener.cleanListenerNotificationName, object: nil)
     }
 
     public init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {

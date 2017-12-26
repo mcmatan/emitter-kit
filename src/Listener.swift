@@ -1,9 +1,12 @@
+import Foundation
+
 
 public func += (storage: inout [Listener], listener: Listener) {
   storage.append(listener)
 }
 
 open class Listener {
+    open let cleanListenerNotificationName = NSNotification.Name("cleanListenerNotificationName")
 
   public var isListening: Bool {
     get {
@@ -44,7 +47,7 @@ open class Listener {
   }
     
     open func onInit() {
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(clean), name: self.cleanListenerNotificationName, object: nil)
     }
 
     public init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
@@ -65,7 +68,12 @@ open class Listener {
     self.onInit()
   }
 
+    @objc func clean() {
+        self.isListening = false
+        NotificationCenter.default.removeObserver(self)
+    }
+
   deinit {
-    self.isListening = false
+    self.clean()
   }
 }

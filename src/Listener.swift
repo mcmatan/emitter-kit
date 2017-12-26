@@ -43,7 +43,7 @@ open class Listener {
     }
   }
 
-  init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
+    public init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
 
     _handler = handler
 

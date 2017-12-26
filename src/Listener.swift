@@ -42,6 +42,10 @@ open class Listener {
       self.isListening = false
     }
   }
+    
+    open func onInit() {
+        
+    }
 
     public init (_ target: AnyObject!, _ once: Bool, _ handler: @escaping (Any!) -> Void) {
 
@@ -57,6 +61,8 @@ open class Listener {
 
     self.once = once
     self.isListening = true
+        
+    self.onInit()
   }
 
   deinit {

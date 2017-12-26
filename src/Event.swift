@@ -51,10 +51,14 @@ open class Event <T> {
   }
 
   deinit {
-    for (_, listeners) in _listeners {
-      for (_, listener) in listeners {
-        listener.object._listening = false
-      }
-    }
+    self.clean()
   }
+    
+    internal func clean() {
+        for (_, listeners) in _listeners {
+            for (_, listener) in listeners {
+                listener.object._listening = false
+            }
+        }
+    }
 }

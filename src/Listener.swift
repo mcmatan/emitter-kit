@@ -6,7 +6,7 @@ public func += (storage: inout [Listener], listener: Listener) {
 }
 
 open class Listener {
-    static let cleanListenerNotificationName = NSNotification.Name("cleanListenerNotificationName")
+    static open let cleanListenerNotificationName = NSNotification.Name("cleanListenerNotificationName")
 
   public var isListening: Bool {
     get {
